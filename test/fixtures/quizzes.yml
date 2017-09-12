@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  instructions: MyText
+  duration: 2017-09-11 22:36:42
+  quiz_type: 1
+  year: 1
+
+two:
+  instructions: MyText
+  duration: 2017-09-11 22:36:42
+  quiz_type: 1
+  year: 1
