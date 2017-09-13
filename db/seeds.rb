@@ -12,6 +12,49 @@ quiz = Quiz.create!(instructions: 'Here are some quiz instructions',
                     year: '2010',
                     course_code: 'CSM 157')
 
+question = Question.create!(
+  quiz: quiz,
+  question_type: 'header',
+  priority: '4',
+  number: '3',
+  question: 'What is photosynthesis?',
+  choices: nil,
+  answer: nil,
+  explanation: 'Photosynthesis is the process by which plants make their food using sunlight, carbon dioxide and water'
+)
+
+question = Question.create!(
+  quiz: quiz,
+  question_type: 'mcq',
+  priority: '4',
+  number: '3',
+  question: 'What is photosynthesis?',
+  choices: nil,
+  answer: nil,
+  explanation: 'Photosynthesis is the process by which plants make their food using sunlight, carbon dioxide and water'
+)
+
+question = Question.create!(
+  quiz: quiz,
+  question_type: 'fill_in',
+  priority: '4',
+  number: '3',
+  question: 'What is photosynthesis?',
+  choices: nil,
+  answer: nil,
+  explanation: 'Photosynthesis is the process by which plants make their food using sunlight, carbon dioxide and water'
+)
+
+question = Question.create!(
+  quiz: quiz,
+  question_type: 'essay',
+  priority: '4',
+  number: '3',
+  question: 'What is photosynthesis?',
+  choices: nil,
+  answer: nil,
+  explanation: 'Photosynthesis is the process by which plants make their food using sunlight, carbon dioxide and water'
+)
 
 quiz = Quiz.create!(instructions: 'Here are some quiz instructions',
                     duration: nil,
@@ -19,17 +62,14 @@ quiz = Quiz.create!(instructions: 'Here are some quiz instructions',
                     year: '2010',
                     course_code: 'CSM 157')
 
-
 quiz = Quiz.create!(instructions: 'Here are some quiz instructions',
                     duration: nil,
                     quiz_type: 'class_test',
                     year: '2010',
                     course_code: 'CSM 157')
 
-
 quiz = Quiz.create!(instructions: 'Here are some quiz instructions',
                     duration: nil,
                     quiz_type: 'assignment',
                     year: '2010',
                     course_code: 'CSM 157')
-
