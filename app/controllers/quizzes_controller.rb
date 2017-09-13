@@ -5,12 +5,12 @@ class QuizzesController < ApplicationController
   def index
     @quizzes = Quiz.all
 
-    paginate json: @quizzes
+    paginate json: @quizzes, include: params[:include]
   end
 
   # GET /quizzes/1
   def show
-    render json: @quiz
+    render json: @quiz, include: params[:include]
   end
 
   # POST /quizzes
