@@ -5,5 +5,8 @@ class Question < ApplicationRecord
     fill_in: 2,
     essay: 3
   }
+
+  serialize :choices, Array
+
   belongs_to :quiz
 end
