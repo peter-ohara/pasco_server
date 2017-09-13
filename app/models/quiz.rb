@@ -11,6 +11,6 @@ class Quiz < ApplicationRecord
   has_many :questions, dependent: :destroy
 
   def name
-    "#{course_code} #{quiz_type} #{year}"
+    "#{course_code} #{quiz_type.humanize.upcase} #{year}"
   end
 end
