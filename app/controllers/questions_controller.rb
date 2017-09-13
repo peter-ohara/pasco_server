@@ -3,9 +3,10 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   def index
-    @questions = Question.all
+    @questions = paginate Question.all
 
-    paginate json: @questions
+    render json: @questions,
+           meta: meta_attributes(@questions)
   end
 
   # GET /questions/1

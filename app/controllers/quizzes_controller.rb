@@ -3,9 +3,11 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes
   def index
-    @quizzes = Quiz.all
+    @quizzes = paginate Quiz.all
 
-    paginate json: @quizzes, include: params[:include]
+    render json: @quizzes,
+             include: params[:include],
+             meta: meta_attributes(@quizzes)
   end
 
   # GET /quizzes/1
