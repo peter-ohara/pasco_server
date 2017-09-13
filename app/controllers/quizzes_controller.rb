@@ -5,7 +5,7 @@ class QuizzesController < ApplicationController
   def index
     @quizzes = Quiz.all
 
-    render json: @quizzes
+    paginate json: @quizzes
   end
 
   # GET /quizzes/1
