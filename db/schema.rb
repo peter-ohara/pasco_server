@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170912091933) do
 
   create_table "questions", force: :cascade do |t|
     t.bigint "quiz_id"
+    t.integer "question_type"
     t.integer "priority"
     t.string "number"
     t.text "question"
@@ -29,17 +30,11 @@ ActiveRecord::Schema.define(version: 20170912091933) do
   end
 
   create_table "quizzes", force: :cascade do |t|
-    t.text "instructions"
-    t.datetime "duration"
+    t.string "course_code"
     t.integer "quiz_type"
     t.integer "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "v1_schools", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.string "short_name"
+    t.text "instructions"
+    t.datetime "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -2,6 +2,7 @@ class CreateQuestions < ActiveRecord::Migration[5.1]
   def change
     create_table :questions do |t|
       t.references :quiz, foreign_key: true
+      t.integer :question_type
       t.integer :priority
       t.string :number
       t.text :question

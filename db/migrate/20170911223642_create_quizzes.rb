@@ -1,10 +1,11 @@
 class CreateQuizzes < ActiveRecord::Migration[5.1]
   def change
     create_table :quizzes do |t|
-      t.text :instructions
-      t.datetime :duration
+      t.string :course_code
       t.integer :quiz_type
       t.integer :year
+      t.text :instructions
+      t.datetime :duration
 
       t.timestamps
     end
