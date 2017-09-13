@@ -6,6 +6,8 @@ class Quiz < ApplicationRecord
     assignment: 3
   }
 
+  serialize :instructions, Array
+
   has_many :questions, dependent: :destroy
 
   def name
