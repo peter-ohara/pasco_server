@@ -3,7 +3,11 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes
   def index
-    @quizzes = paginate Quiz.all
+    if params[:by_name]
+      @quizzes = paginate Quiz.search_by_name(params[:by_name])
+    else
+      @quizzes = paginate Quiz.all
+    end
 
     render json: @quizzes,
              include: params[:include],

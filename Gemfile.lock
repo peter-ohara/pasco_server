@@ -86,6 +86,10 @@ GEM
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     pg (0.21.0)
+    pg_search (2.1.0)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
+      arel (>= 6)
     puma (3.10.0)
     rack (2.0.3)
     rack-cors (0.4.1)
@@ -149,6 +153,7 @@ DEPENDENCIES
   kaminari
   listen (>= 3.0.5, < 3.2)
   pg (~> 0.18)
+  pg_search
   puma (~> 3.7)
   rack-cors
   rails (~> 5.1.3)
