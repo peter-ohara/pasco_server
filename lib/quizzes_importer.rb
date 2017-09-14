@@ -27,7 +27,7 @@ class QuizzesImporter
     quiz_type = get_quiz_type(test_hash['type'])
     year = test_hash['year']
     duration = DateTime.new  + test_hash['duration'].to_i.hours
-    instructions = test_hash['instructions']
+    instructions = test_hash['instructions'].join('\n\n')
 
 
     quiz = Quiz.find_or_initialize_by(course_code: course_code,
