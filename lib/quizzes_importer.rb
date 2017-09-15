@@ -24,6 +24,7 @@ class QuizzesImporter
   def get_quiz_from_test_hash(test_hash)
     course_key = test_hash['courseKey']
     course_code = @courses_hash[course_key]['code']
+    course_name = @courses_hash[course_key]['name']
     quiz_type = get_quiz_type(test_hash['type'])
     year = test_hash['year']
     duration = DateTime.new  + test_hash['duration'].to_i.hours
@@ -31,6 +32,7 @@ class QuizzesImporter
 
 
     quiz = Quiz.find_or_initialize_by(course_code: course_code,
+                                      course_name: course_name,
                                       quiz_type: quiz_type,
                                       year: year,
                                       duration: duration)
