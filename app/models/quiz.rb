@@ -1,7 +1,7 @@
 class Quiz < ApplicationRecord
   include PgSearch
   pg_search_scope :search_by_name,
-                  against: %i[course_code quiz_type year],
+                  against: %i[course_code course_name quiz_type year],
                   using: {
                     tsearch: {
                       prefix: true,
