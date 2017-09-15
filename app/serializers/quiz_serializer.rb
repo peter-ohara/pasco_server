@@ -2,7 +2,14 @@ class QuizSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
   include ActionView::Helpers::DateHelper
 
-  attributes :id, :instructions, :duration, :quiz_type, :year, :name
+  attributes :id,
+             :course_code,
+             :course_name,
+             :quiz_type,
+             :year,
+             :duration,
+             :instructions,
+             :name
 
   has_many(:questions)
 
