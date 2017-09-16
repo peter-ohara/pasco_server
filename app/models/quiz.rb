@@ -7,14 +7,14 @@ class Quiz < ApplicationRecord
                       prefix: true,
                       any_word: true,
                       highlight: {
-                          StartSel: '<start>',
-                          StopSel: '<stop>',
-                          MaxWords: 123,
-                          MinWords: 456,
-                          ShortWord: 4,
-                          HighlightAll: true,
-                          MaxFragments: 3,
-                          FragmentDelimiter: '&hellip;'
+                        StartSel: '<start>',
+                        StopSel: '<stop>',
+                        MaxWords: 123,
+                        MinWords: 456,
+                        ShortWord: 4,
+                        HighlightAll: true,
+                        MaxFragments: 3,
+                        FragmentDelimiter: '&hellip;'
                       }
                     }
                   }
@@ -26,7 +26,7 @@ class Quiz < ApplicationRecord
     assignment: 3
   }
 
-  has_many :questions, dependent: :destroy
+  has_many :questions, -> { order 'priority ASC' }, dependent: :destroy
 
   def name
     "#{course_code} #{quiz_type.humanize.upcase} #{year}"

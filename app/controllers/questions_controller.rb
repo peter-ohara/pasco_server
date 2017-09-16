@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   def index
-    @questions = paginate Question.all
+    @questions = paginate Question.order(priority: :asc)
 
     render json: @questions,
            meta: meta_attributes(@questions)
