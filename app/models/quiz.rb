@@ -31,4 +31,8 @@ class Quiz < ApplicationRecord
   def name
     "#{course_code} #{quiz_type.humanize.upcase} #{year}"
   end
+
+  def question_count
+    questions.count
+  end
 end

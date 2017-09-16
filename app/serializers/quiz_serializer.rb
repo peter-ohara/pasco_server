@@ -9,7 +9,8 @@ class QuizSerializer < ActiveModel::Serializer
              :year,
              :duration,
              :instructions,
-             :name
+             :name,
+             :question_count
 
   has_many(:questions)
 
