@@ -5798,7 +5798,7 @@
       "number" : "21",
       "question" : "<div class=\"header-content\">Use the information below to calculate the current ratio. Write your answer in the space provided.<br>\nCurrent Assets = $ 1,105<br>\nCurrent liabilities = $800\nInventory = $646\n<br>\nCurrent Ratio =  {$a} </div>",
       "testKey" : "KNUME49112M",
-      "type" : "fillin"
+      "type" : "fillIn"
     },
     "KNUME49112MAQ22" : {
       "answer" : "",
@@ -5809,7 +5809,7 @@
         "bvcTUNpQ6CdbwWuk8ji11xyVoUh2" : "[\"Ghhfy\"]"
       },
       "testKey" : "KNUME49112M",
-      "type" : "fillin"
+      "type" : "fillIn"
     },
     "KNUME49112MAQ23" : {
       "answer" : "",
@@ -5820,7 +5820,7 @@
         "bvcTUNpQ6CdbwWuk8ji11xyVoUh2" : "[\"$234\", \"\"hello\" world\"]"
       },
       "testKey" : "KNUME49112M",
-      "type" : "fillin"
+      "type" : "fillIn"
     },
     "KNUME49112MAQ24" : {
       "answer" : "",

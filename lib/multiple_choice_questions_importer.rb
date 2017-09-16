@@ -26,9 +26,9 @@ class MultipleChoiceQuestionsImporter
     multiple_choice_question = get_multiple_choice_question(question_hash, quiz, priority)
 
     if multiple_choice_question.save
-      puts "MultipleChoiceQuestion created successfully: #{multiple_choice_question.number}"
+      puts "Question created successfully: #{multiple_choice_question.number}"
     else
-      puts "Error creating multiple_choice_question, #{multiple_choice_question.errors.inspect}"
+      puts "Error creating question, #{multiple_choice_question.errors.inspect}"
     end
   end
 
@@ -38,13 +38,18 @@ class MultipleChoiceQuestionsImporter
     answer = question_hash['answer']
     explanation = question_hash['explanation']
     number = question_hash['number']
+    title = question_hash['title']
+    content = question_hash['content']
 
     multiple_choice_question = Question.find_or_initialize_by(quiz_id: quiz.id,
-                                                                            priority: priority,
-                                                                            number: number,
-                                                                            question: question,
-                                                                            explanation: explanation,
-                                                                            answer: answer)
+                                                              priority: priority,
+                                                              question_type: question_type.underscore,
+                                                              title: title,
+                                                              content: content,
+                                                              number: number,
+                                                              question: question,
+                                                              explanation: explanation,
+                                                              answer: answer)
 
     if (question_type == 'mcq')
       multiple_choice_question.choices = get_choices(question_hash['choices'])

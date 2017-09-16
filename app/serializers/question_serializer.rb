@@ -1,7 +1,17 @@
 class QuestionSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
-  attributes :id, :priority, :number, :question, :choices, :answer, :explanation
+  attributes :id,
+             :quiz_id,
+             :question_type,
+             :priority,
+             :title,
+             :content,
+             :number,
+             :question,
+             :choices,
+             :answer,
+             :explanation
 
     attribute :links do
       {
