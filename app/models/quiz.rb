@@ -26,7 +26,8 @@ class Quiz < ApplicationRecord
     assignment: 3
   }
 
-  has_many :questions, -> { order 'priority ASC' }, dependent: :destroy
+  has_many :questions, -> { order 'priority ASC' },
+           dependent: :destroy, inverse_of: :quiz
 
   def name
     if quiz_type

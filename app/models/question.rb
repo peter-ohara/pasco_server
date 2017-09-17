@@ -8,5 +8,5 @@ class Question < ApplicationRecord
 
   serialize :choices, Array
 
-  belongs_to :quiz
+  belongs_to :quiz, inverse_of: :questions
 end
