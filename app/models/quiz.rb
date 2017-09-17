@@ -29,7 +29,11 @@ class Quiz < ApplicationRecord
   has_many :questions, -> { order 'priority ASC' }, dependent: :destroy
 
   def name
-    "#{course_code} #{quiz_type.humanize.upcase} #{year}"
+    if quiz_type
+      "#{course_code} #{quiz_type.humanize.upcase} #{year}"
+    else
+      "#{course_code} #{year}"
+    end
   end
 
   def question_count
