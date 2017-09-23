@@ -39,9 +39,13 @@
     var contentField = $("#question_content");
     var textAreaField = $("#question_choices");
     var questionTypeField = $('#question_question_type');
-    var questionRelatedFields = $('#question_number_field, #question_question_field, ' +
-        '#question_choices_field, #question_answer_field, #question_explanation_field');
     var headerRelatedFields = $('#question_title_field, #question_content_field');
+    var mcqRelatedFields = $('#question_number_field, #question_question_field, ' +
+        '#question_choices_field, #question_answer_field, #question_explanation_field');
+    var fillInRelatedFields = $('#question_number_field, #question_question_field, ' +
+        '#question_answer_field, #question_explanation_field');
+    var essayRelatedFields = $('#question_number_field, #question_question_field, ' +
+        '#question_answer_field, #question_explanation_field');
 
     function renderQuestion() {
         $("#rendered_question").html(questionField.val());
@@ -86,14 +90,57 @@
         });
     }
 
-    questionTypeField.change(function () {
+    function displayHeader() {
+        mcqRelatedFields.hide();
+        fillInRelatedFields.hide();
+        essayRelatedFields.hide();
+        headerRelatedFields.show();
+    }
+
+    function displayMCQ() {
+        headerRelatedFields.hide();
+        fillInRelatedFields.hide();
+        essayRelatedFields.hide();
+        mcqRelatedFields.show();
+    }
+
+    function displayFillIn() {
+        headerRelatedFields.hide();
+        mcqRelatedFields.hide();
+        essayRelatedFields.hide();
+        fillInRelatedFields.show();
+    }
+
+    function displayEssay() {
+        headerRelatedFields.hide();
+        mcqRelatedFields.hide();
+        fillInRelatedFields.hide();
+        essayRelatedFields.show();
+    }
+
+    function hideAllFields() {
+        headerRelatedFields.hide();
+        mcqRelatedFields.hide();
+        fillInRelatedFields.hide();
+        essayRelatedFields.hide();
+    }
+
+    function displayCorrectFields() {
         if (questionTypeField.val() === '0') {
-            questionRelatedFields.hide();
-            headerRelatedFields.show();
+            displayHeader();
+        } else if (questionTypeField.val() === '1') {
+            displayMCQ();
+        } else if (questionTypeField.val() === '2') {
+            displayFillIn();
+        } else if (questionTypeField.val() === '3') {
+            displayEssay();
         } else {
-            questionRelatedFields.show();
-            headerRelatedFields.hide();
+            hideAllFields();
         }
+    }
+
+    questionTypeField.change(function () {
+        displayCorrectFields();
     });
 
     questionField.keyup(function(){
@@ -111,6 +158,7 @@
     renderQuestion();
     renderChoices();
     renderContent();
+    displayCorrectFields();
 
     autosize($('textarea'));
 </script>
