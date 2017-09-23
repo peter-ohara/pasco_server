@@ -51,15 +51,25 @@ RailsAdmin.config do |config|
 
   config.model 'Question' do
     edit do
-      configure :question do
+      field :quiz
+      field :priority
+      field :question_type
+
+      field :number
+
+      field :question do
         partial 'question_question'
       end
 
-      configure :choices do
+      field :choices do
         partial 'question_choices'
       end
 
-      configure :content do
+      field :answer
+      field :explanation
+
+      field :title
+      field :content do
         partial 'question_content'
       end
     end
