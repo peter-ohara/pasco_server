@@ -20,8 +20,4 @@ class QuizSerializer < ActiveModel::Serializer
       questions: quiz_questions_path(object)
     }
   end
-
-  def duration
-    (object.duration - DateTime.new) / 1.hours
-  end
 end

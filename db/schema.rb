@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916204902) do
+ActiveRecord::Schema.define(version: 20170923201135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170916204902) do
   create_table "questions", force: :cascade do |t|
     t.bigint "quiz_id"
     t.integer "question_type"
-    t.integer "priority"
+    t.float "priority"
     t.string "number"
     t.text "question"
     t.text "choices"
@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(version: 20170916204902) do
     t.integer "quiz_type"
     t.integer "year"
     t.text "instructions"
-    t.datetime "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "course_name"
+    t.float "duration"
   end
 
   add_foreign_key "questions", "quizzes"
