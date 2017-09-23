@@ -46,6 +46,8 @@ RailsAdmin.config do |config|
       field :year
       field :instructions
       field :duration
+
+      field :questions
     end
   end
 
