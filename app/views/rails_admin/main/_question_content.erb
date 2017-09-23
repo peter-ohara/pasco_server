@@ -38,6 +38,10 @@
     var questionField = $("#question_question");
     var contentField = $("#question_content");
     var textAreaField = $("#question_choices");
+    var questionTypeField = $('#question_question_type');
+    var questionRelatedFields = $('#question_number_field, #question_question_field, ' +
+        '#question_choices_field, #question_answer_field, #question_explanation_field');
+    var headerRelatedFields = $('#question_title_field, #question_content_field');
 
     function renderQuestion() {
         $("#rendered_question").html(questionField.val());
@@ -81,6 +85,16 @@
             if (typeof(katex) != "undefined") AMfunc(true);
         });
     }
+
+    questionTypeField.change(function () {
+        if (questionTypeField.val() === '0') {
+            questionRelatedFields.hide();
+            headerRelatedFields.show();
+        } else {
+            questionRelatedFields.show();
+            headerRelatedFields.hide();
+        }
+    });
 
     questionField.keyup(function(){
         renderQuestion();
