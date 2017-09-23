@@ -1,30 +1,14 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-lg-12" style="margin-bottom: 1em;">
     <%= form.text_area :choices, class: 'form-control', cols: 43, rows: 3,
                        data: {'richtext': 'false', 'options': {}} %>
   </div>
-  <div class="col-md-6">
+  <div class="col-lg-12">
     <div class="page">
       <div class="row">
         <div id="options">
           <div class="mcq-answer-box">
             <ul id="rendered_choices">
-              <% form.object.choices.each_with_index do |choice, index| %>
-                  <li>
-                    <span class="choice"> <%= (index + 97).chr %></span>
-                    <input type="radio" name="choices" value="a" id="a">
-                    <label for="a">
-                    <span class="check">
-                      <span class="inside">
-                      </span>
-                    </span>
-                      <%= choice %>
-                    </label>
-                    <% unless index == form.object.choices.size - 1 %>
-                        <hr>
-                    <% end %>
-                  </li>
-              <% end %>
             </ul>
           </div>
         </div>
@@ -49,17 +33,22 @@
 <script src="/ASCIIMathTeXKaTeX-2016-06-17.min.js"></script>
 <script src="/katex/katex.min.js"></script>
 <script>if (typeof(katex) != "undefined") AMfunc(true); </script>
+<script src="/autosize.min.js"></script>
+
 
 <script type="text/javascript" charset="utf-8">
-    $("#question_question").keyup(function(){
-        $("#rendered_question").html($(this).val());
-        // $("#user-code").text($(this).val()); // If you want html code to be escaped
-        if (typeof(katex) != "undefined") AMfunc(true);
-    });
+    var questionField = $("#question_question");
+    var textAreaField = $("#question_choices");
 
-    $("#question_choices").keyup(function(){
-        console.log($(this).val());
-        var choices = JSON.parse( $(this).val() );
+    function renderQuestion() {
+        $("#rendered_question").html(questionField.val());
+        // $("#user-code").text(questionField.val()); // If you want html code to be escaped
+        if (typeof(katex) != "undefined") AMfunc(true);
+    }
+
+    function renderChoices() {
+        console.log(textAreaField.val());
+        var choices = JSON.parse(textAreaField.val());
         console.log(choices);
 
         // Clear options
@@ -67,14 +56,14 @@
         // Recreate options
         choices.forEach(function (choice, index) {
             var choiceElement = '<li>\n' +
-                '  <span class="choice">' + index + '</span>\n' +
+                '  <span class="choice">' + String.fromCharCode(97 + index) + '</span>\n' +
                 '  <input type="radio" name="choices" value="a" id="a">\n' +
                 '  <label for="a">\n' +
                 '    <span class="check">\n' +
                 '      <span class="inside">\n' +
                 '      </span>\n' +
                 '    </span>\n' +
-                '    ' + choice +
+                '    <span class="choice-span">' + choice + '</span>\n' +
                 '  </label>';
 
             if (choices.length - 1 !== index) {
@@ -86,5 +75,18 @@
             $("#rendered_choices").append(choiceElement);
             if (typeof(katex) != "undefined") AMfunc(true);
         });
+    }
+
+    questionField.keyup(function(){
+        renderQuestion();
     });
+
+    textAreaField.keyup(function(){
+        renderChoices();
+    });
+
+    renderQuestion();
+    renderChoices();
+
+    autosize($('textarea'));
 </script>

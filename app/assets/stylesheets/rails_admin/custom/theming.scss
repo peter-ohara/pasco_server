@@ -56,4 +56,13 @@
     text-align: justify;
     padding: 10px 15px;
   }
+
+
+  #rendered_question {
+    white-space: pre-wrap;
+  }
+
+  .choice-span {
+    white-space: pre-wrap;
+  }
 }
