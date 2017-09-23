@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-6">
+    <%= form.text_area :question, class: 'form-control', cols: 43, rows: 3,
+                       data: {'richtext': 'false', 'options': {}} %>
+  </div>
+  <div class="col-md-6">
+    <div class="page">
+      <div class="row">
+        <div class="mcq-question">
+            <span>
+            	<%= form.object.question %>
+        	</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

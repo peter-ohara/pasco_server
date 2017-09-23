@@ -38,4 +38,16 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'Question' do
+    edit do
+      configure :question do
+        partial "question_question"
+      end
+
+      configure :choices do
+        partial "question_choices"
+      end
+    end
+  end
 end

@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-6">
+    <%= form.text_area :choices, class: 'form-control', cols: 43, rows: 3,
+                       data: {'richtext': 'false', 'options': {}} %>
+  </div>
+  <div class="col-md-6">
+    <div class="page">
+      <div class="row">
+        <div id="options">
+          <div class="mcq-answer-box">
+            <ul>
+              <% form.object.choices.each_with_index do |choice, index| %>
+                  <li>
+                    <span class="choice"> <%= (index + 97).chr %></span>
+                    <input type="radio" name="choices" value="a" id="a">
+                    <label for="a">
+                    <span class="check">
+                      <span class="inside">
+                      </span>
+                    </span>
+                      <%= choice %>
+                    </label>
+                    <% unless index == form.object.choices.size - 1 %>
+                        <hr>
+                    <% end %>
+                  </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<link rel="stylesheet" href="/katex/katex.min.css">
+<script type="text/javascript"
+        async src="/MathJax/MathJax.js?config=AM_CHTML-full"></script>
+<script src="/ASCIIMathTeXKaTeX-2016-06-17.min.js"></script>
+<script src="/katex/katex.min.js"></script>
+<script>if (typeof(katex) != "undefined") AMfunc(true); </script>
+
+<link rel="stylesheet" href="/katex/katex.min.css">
+<script type="text/javascript"
+        async src="/MathJax/MathJax.js?config=AM_CHTML-full"></script>
+<script src="/ASCIIMathTeXKaTeX-2016-06-17.min.js"></script>
+<script src="/katex/katex.min.js"></script>
+<script>if (typeof(katex) != "undefined") AMfunc(true); </script>
