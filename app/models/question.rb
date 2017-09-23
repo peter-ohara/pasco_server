@@ -11,6 +11,14 @@ class Question < ApplicationRecord
   belongs_to :quiz, inverse_of: :questions
 
 
-  validates :priority, presence: true
+  validates :priority, :question_type, presence: true
+
+  validates :title, :content, presence: true, if: :header?
+
+  validates :number, :question, :choices, presence: true, if: :mcq?
+
+  validates :number, :question, presence: true, if: :fill_in?
+
+  validates :number, :question, presence: true, if: :essay?
 
 end
