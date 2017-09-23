@@ -9,4 +9,8 @@ class Question < ApplicationRecord
   serialize :choices, Array
 
   belongs_to :quiz, inverse_of: :questions
+
+
+  validates :priority, presence: true
+
 end
