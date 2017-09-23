@@ -1,5 +1,4 @@
 RailsAdmin.config do |config|
-
   ### Popular gems integration
 
   ## == Devise ==
@@ -53,15 +52,15 @@ RailsAdmin.config do |config|
   config.model 'Question' do
     edit do
       configure :question do
-        partial "question_question"
+        partial 'question_question'
       end
 
       configure :choices do
-        partial "question_choices"
+        partial 'question_choices'
       end
 
       configure :content do
-        partial "question_content"
+        partial 'question_content'
       end
     end
   end
