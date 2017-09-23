@@ -8,7 +8,7 @@
       <div class="row">
         <div id="options">
           <div class="mcq-answer-box">
-            <ul>
+            <ul id="rendered_choices">
               <% form.object.choices.each_with_index do |choice, index| %>
                   <li>
                     <span class="choice"> <%= (index + 97).chr %></span>
@@ -49,3 +49,40 @@
 <script src="/ASCIIMathTeXKaTeX-2016-06-17.min.js"></script>
 <script src="/katex/katex.min.js"></script>
 <script>if (typeof(katex) != "undefined") AMfunc(true); </script>
+
+<script type="text/javascript" charset="utf-8">
+    $("#question_question").keyup(function(){
+        $("#rendered_question").html($(this).val());
+        // $("#user-code").text($(this).val()); // If you want html code to be escaped
+    });
+
+    $("#question_choices").keyup(function(){
+        console.log($(this).val());
+        var choices = JSON.parse( $(this).val() );
+        console.log(choices);
+
+        // Clear options
+        $("#rendered_choices").html("");
+        // Recreate options
+        choices.forEach(function (choice, index) {
+            var choiceElement = '<li>\n' +
+                '  <span class="choice">' + index + '</span>\n' +
+                '  <input type="radio" name="choices" value="a" id="a">\n' +
+                '  <label for="a">\n' +
+                '    <span class="check">\n' +
+                '      <span class="inside">\n' +
+                '      </span>\n' +
+                '    </span>\n' +
+                '    ' + choice +
+                '  </label>';
+
+            if (choices.length - 1 !== index) {
+                choiceElement += '<hr>';
+            }
+
+            choiceElement += '</li>';
+
+            $("#rendered_choices").append(choiceElement);
+        });
+    });
+</script>
