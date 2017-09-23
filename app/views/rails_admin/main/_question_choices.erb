@@ -54,6 +54,7 @@
     $("#question_question").keyup(function(){
         $("#rendered_question").html($(this).val());
         // $("#user-code").text($(this).val()); // If you want html code to be escaped
+        if (typeof(katex) != "undefined") AMfunc(true);
     });
 
     $("#question_choices").keyup(function(){
@@ -83,6 +84,7 @@
             choiceElement += '</li>';
 
             $("#rendered_choices").append(choiceElement);
+            if (typeof(katex) != "undefined") AMfunc(true);
         });
     });
 </script>
