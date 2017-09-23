@@ -39,6 +39,17 @@ RailsAdmin.config do |config|
     # history_show
   end
 
+  config.model 'Quiz' do
+    edit do
+      field :course_code
+      field :course_name
+      field :quiz_type
+      field :year
+      field :instructions
+      field :duration
+    end
+  end
+
   config.model 'Question' do
     edit do
       configure :question do
