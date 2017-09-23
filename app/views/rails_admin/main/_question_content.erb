@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="col-lg-12" style="margin-bottom: 1em;">
+    <%= form.text_area :content, class: 'form-control', cols: 43, rows: 3,
+                       data: {'richtext': 'false', 'options': {}} %>
+  </div>
+  <div class="col-lg-12">
+    <div class="page">
+      <div class="row">
+        <div class="mcq-question">
+          <span id="rendered_content">
+        	</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<link rel="stylesheet" href="/katex/katex.min.css">
+<script type="text/javascript"
+        async src="/MathJax/MathJax.js?config=AM_CHTML-full"></script>
+<script src="/ASCIIMathTeXKaTeX-2016-06-17.min.js"></script>
+<script src="/katex/katex.min.js"></script>
+<script>if (typeof(katex) != "undefined") AMfunc(true); </script>
+
+<link rel="stylesheet" href="/katex/katex.min.css">
+<script type="text/javascript"
+        async src="/MathJax/MathJax.js?config=AM_CHTML-full"></script>
+<script src="/ASCIIMathTeXKaTeX-2016-06-17.min.js"></script>
+<script src="/katex/katex.min.js"></script>
+<script>if (typeof(katex) != "undefined") AMfunc(true); </script>
+<script src="/autosize.min.js"></script>
+
+
+<script type="text/javascript" charset="utf-8">
+    var questionField = $("#question_question");
+    var contentField = $("#question_content");
+    var textAreaField = $("#question_choices");
+
+    function renderQuestion() {
+        $("#rendered_question").html(questionField.val());
+        // $("#user-code").text(questionField.val()); // If you want html code to be escaped
+        if (typeof(katex) != "undefined") AMfunc(true);
+    }
+
+    function renderContent() {
+        $("#rendered_content").html(contentField.val());
+        // $("#user-code").text(contentField.val()); // If you want html code to be escaped
+        if (typeof(katex) != "undefined") AMfunc(true);
+    }
+
+    function renderChoices() {
+        console.log(textAreaField.val());
+        var choices = JSON.parse(textAreaField.val());
+        console.log(choices);
+
+        // Clear options
+        $("#rendered_choices").html("");
+        // Recreate options
+        choices.forEach(function (choice, index) {
+            var choiceElement = '<li>\n' +
+                '  <span class="choice">' + String.fromCharCode(97 + index) + '</span>\n' +
+                '  <input type="radio" name="choices" value="a" id="a">\n' +
+                '  <label for="a">\n' +
+                '    <span class="check">\n' +
+                '      <span class="inside">\n' +
+                '      </span>\n' +
+                '    </span>\n' +
+                '    <span class="choice-span">' + choice + '</span>\n' +
+                '  </label>';
+
+            if (choices.length - 1 !== index) {
+                choiceElement += '<hr>';
+            }
+
+            choiceElement += '</li>';
+
+            $("#rendered_choices").append(choiceElement);
+            if (typeof(katex) != "undefined") AMfunc(true);
+        });
+    }
+
+    questionField.keyup(function(){
+        renderQuestion();
+    });
+
+    contentField.keyup(function(){
+        renderContent();
+    });
+
+    textAreaField.keyup(function(){
+        renderChoices();
+    });
+
+    renderQuestion();
+    renderChoices();
+    renderContent();
+
+    autosize($('textarea'));
+</script>

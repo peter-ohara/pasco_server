@@ -48,6 +48,10 @@ RailsAdmin.config do |config|
       configure :choices do
         partial "question_choices"
       end
+
+      configure :content do
+        partial "question_content"
+      end
     end
   end
 end
