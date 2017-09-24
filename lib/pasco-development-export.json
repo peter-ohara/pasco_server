@@ -4152,7 +4152,7 @@
       "type" : "mcq"
     },
     "KNUENGL15712EBQ30" : {
-      "answer" : "The inhabitants of the village suffer from a number of water-borne diseases because they do ot have access to ............ water",
+      "answer" : "",
       "choices" : {
         "a" : "portable",
         "b" : "portarble",
@@ -4161,7 +4161,7 @@
       },
       "explanation" : "",
       "number" : "30",
-      "question" : "",
+      "question" : "The inhabitants of the village suffer from a number of water-borne diseases because they do ot have access to ............ water",
       "testKey" : "KNUENGL15712E",
       "type" : "mcq"
     },
