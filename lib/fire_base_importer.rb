@@ -55,6 +55,6 @@ class FireBaseImporter
   end
 end
 
-importer = FireBaseImporter.new('lib/project-9175645934086190686-export.json')
+importer = FireBaseImporter.new('lib/pasco-development-export.json')
 importer.import_tests
-importer.import_questions
+# importer.import_questions
