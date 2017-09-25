@@ -6,7 +6,7 @@ class QuizzesController < ApplicationController
     if params[:by_name]
       @quizzes = paginate Quiz.search_by_name(params[:by_name])
     else
-      @quizzes = paginate Quiz.all
+      @quizzes = paginate Quiz.order(course_code: :asc)
     end
 
     render json: @quizzes,
