@@ -26,6 +26,11 @@ class Quiz < ApplicationRecord
       assignment: 3
   }
 
+  enum visibility: {
+    visible_to_admins: 0,
+    visible_to_public: 1
+  }
+
   has_many :questions, -> {order 'priority ASC'},
            dependent: :destroy, inverse_of: :quiz
 

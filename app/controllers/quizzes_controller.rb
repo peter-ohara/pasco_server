@@ -4,9 +4,9 @@ class QuizzesController < ApplicationController
   # GET /quizzes
   def index
     if params[:by_name]
-      @quizzes = paginate Quiz.search_by_name(params[:by_name])
+      @quizzes = paginate Quiz.visible_to_public.search_by_name(params[:by_name])
     else
-      @quizzes = paginate Quiz.order(course_code: :asc)
+      @quizzes = paginate Quiz.visible_to_public.order(course_code: :asc)
     end
 
     render json: @quizzes,
@@ -47,7 +47,7 @@ class QuizzesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quiz
-      @quiz = Quiz.find(params[:id])
+      @quiz = Quiz.visible_to_public.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

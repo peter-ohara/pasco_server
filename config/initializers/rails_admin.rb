@@ -47,6 +47,8 @@ RailsAdmin.config do |config|
       field :instructions
       field :duration
 
+      field :visibility
+
       field :questions
     end
   end
