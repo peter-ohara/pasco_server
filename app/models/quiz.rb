@@ -49,7 +49,7 @@ class Quiz < ApplicationRecord
 
   def name
     if quiz_type
-      "#{course_code} #{quiz_type.humanize.upcase} #{year}"
+      "#{course_code} #{quiz_type.humanize.titleize} #{year}"
     else
       "#{course_code} #{year}"
     end
