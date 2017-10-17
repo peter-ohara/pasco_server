@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  post 'auth/login' => 'user_token#create'
+  post 'auth/register' => 'users#create'
+  get 'auth/user' => 'users#show'
+  get 'auth/refresh' => 'users#refresh_token'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :quizzes do
     resources :questions, shallow: true
