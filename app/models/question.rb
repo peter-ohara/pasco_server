@@ -21,4 +21,7 @@ class Question < ApplicationRecord
 
   validates :number, :question, presence: true, if: :essay?
 
+  def uploads
+    "some upload"
+  end
 end

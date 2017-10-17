@@ -1,7 +1,10 @@
 <div class="row">
   <div class="col-lg-12" style="margin-bottom: 1em;">
     <%= form.text_area :question, class: 'form-control', cols: 43, rows: 3,
-                       data: {'richtext': 'false', 'options': {}} %>
+                       data: { 'richtext': 'false', 'options': {}, 'render-in': '#rendered_question' } %>
+    <br>
+    <a href="#" id="question_upload_widget_opener"
+       data-upload="#question_question">Upload image</a>
   </div>
   <div class="col-lg-12">
     <div class="page">

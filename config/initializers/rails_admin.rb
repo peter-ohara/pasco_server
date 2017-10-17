@@ -69,10 +69,16 @@ RailsAdmin.config do |config|
         partial 'question_choices'
       end
 
-      field :answer
-      field :explanation
+      field :answer do
+        partial 'question_answer'
+      end
+
+      field :explanation do
+        partial 'question_explanation'
+      end
 
       field :title
+
       field :content do
         partial 'question_content'
       end
