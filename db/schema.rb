@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171007185257) do
+ActiveRecord::Schema.define(version: 20171027162313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "courses", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.integer "level"
+    t.integer "semester"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_purchases_on_course_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
 
   create_table "questions", force: :cascade do |t|
     t.bigint "quiz_id"
@@ -41,6 +59,8 @@ ActiveRecord::Schema.define(version: 20171007185257) do
     t.string "course_name"
     t.float "duration"
     t.integer "visibility", default: 0
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_quizzes_on_course_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,5 +71,8 @@ ActiveRecord::Schema.define(version: 20171007185257) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "purchases", "courses"
+  add_foreign_key "purchases", "users"
   add_foreign_key "questions", "quizzes"
+  add_foreign_key "quizzes", "courses"
 end

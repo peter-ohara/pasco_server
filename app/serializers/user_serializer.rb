@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :id, :name, :email
 
-  has_many(:quizzes)
+  has_many(:courses)
 end

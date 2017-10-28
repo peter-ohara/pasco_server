@@ -1,5 +1,8 @@
 class Quiz < ApplicationRecord
   include PgSearch
+
+  belongs_to :course
+
   pg_search_scope :search_by_name,
                   against: %i[course_code course_name year],
                   using: {
