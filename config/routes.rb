@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :courses
+  resources :purchases
   post 'auth/login' => 'user_token#create'
   post 'auth/register' => 'users#create'
   get 'auth/user' => 'users#show'
