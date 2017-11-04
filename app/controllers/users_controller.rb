@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.purchases.build(course: Course.find_by(code: 'ME161'))
     @user.purchases.build(course: Course.find_by(code: 'ENGL157'))
+    @user.pasco_gold = 50
 
     if @user.save
       render json: @user, status: :created
