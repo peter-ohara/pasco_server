@@ -40,8 +40,7 @@ RailsAdmin.config do |config|
 
   config.model 'Quiz' do
     edit do
-      field :course_code
-      field :course_name
+      field :course
       field :quiz_type
       field :year
       field :instructions

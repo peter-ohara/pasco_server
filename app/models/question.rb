@@ -21,4 +21,12 @@ class Question < ApplicationRecord
 
   validates :number, :question, presence: true, if: :essay?
 
+  def name
+    if question_type == 'header'
+      "#{title}. #{content}".truncate(80)
+    else
+      "#{number}. #{question}".truncate(80)
+    end
+  end
+
 end
