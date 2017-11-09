@@ -18,8 +18,8 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-    @user.purchases.build(course: Course.find_by(code: 'ME161'))
-    @user.pasco_gold = 50
+    @user.purchases.build(course: Course.find_by(code: 'ENGL157'))
+    @user.pasco_gold = 99
 
     if @user.save
       render json: @user, status: :created
