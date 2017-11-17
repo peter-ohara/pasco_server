@@ -1,8 +1,9 @@
 class Course < ApplicationRecord
 
-  has_many :purchases
+  has_many :purchases, inverse_of: :course
   has_many :users, through: :purchases
-  has_many :quizzes
+
+  has_many :quizzes, inverse_of: :course
 
   def title
     "#{code} #{name}"
