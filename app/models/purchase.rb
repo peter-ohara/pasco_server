@@ -13,7 +13,9 @@ class Purchase < ApplicationRecord
   end
 
   def update_users_pasco_gold
-    user.pasco_gold = user.pasco_gold - course.price
+    user.gold_ledger_entries
+        .build(amount: -course.price,
+               notes: "Purchase of #{course.name} for #{course.price}")
     unless user.save
       raise ActiveRecord::Rollback
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109155644) do
+ActiveRecord::Schema.define(version: 20171118182110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20171109155644) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price"
+  end
+
+  create_table "gold_ledger_entries", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "amount"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_gold_ledger_entries_on_user_id"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -70,10 +79,10 @@ ActiveRecord::Schema.define(version: 20171109155644) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "pasco_gold"
     t.string "programme"
   end
 
+  add_foreign_key "gold_ledger_entries", "users"
   add_foreign_key "purchases", "courses"
   add_foreign_key "purchases", "users"
   add_foreign_key "questions", "quizzes"
