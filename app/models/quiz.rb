@@ -61,4 +61,18 @@ class Quiz < ApplicationRecord
   def question_count
     questions.count
   end
+
+  rails_admin do
+    edit do
+      field :course
+      field :quiz_type
+      field :year
+      field :instructions
+      field :duration
+
+      field :visibility
+
+      field :questions
+    end
+  end
 end

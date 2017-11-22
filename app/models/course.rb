@@ -28,4 +28,14 @@ class Course < ApplicationRecord
   def assignment_count
     quizzes.assignment.count
   end
+
+  rails_admin do
+    object_label_method do
+      :custom_label_method
+    end
+  end
+
+  def custom_label_method
+    "#{self.code} - #{self.name}"
+  end
 end

@@ -29,4 +29,30 @@ class Question < ApplicationRecord
     end
   end
 
+
+  rails_admin do
+    edit do
+      field :quiz
+      field :priority
+      field :question_type
+
+      field :number
+
+      field :question do
+        partial 'question_question'
+      end
+
+      field :choices do
+        partial 'question_choices'
+      end
+
+      field :answer
+      field :explanation
+
+      field :title
+      field :content do
+        partial 'question_content'
+      end
+    end
+  end
 end
