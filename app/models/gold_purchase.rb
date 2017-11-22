@@ -1,7 +1,15 @@
 class GoldPurchase < ApplicationRecord
   include ActionView::Helpers::DateHelper
+
   belongs_to :gold_ledger_entry, optional: true
   belongs_to :user
+
+  enum network: {
+      mtn: 0,
+      vodafone: 1,
+      airtel: 2,
+      tigo: 3
+  }
 
   monetize :price_pesewas, as: 'price'
 

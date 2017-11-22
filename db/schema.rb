@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121132838) do
+ActiveRecord::Schema.define(version: 20171122074607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20171121132838) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.integer "amount"
+    t.integer "network"
     t.index ["gold_ledger_entry_id"], name: "index_gold_purchases_on_gold_ledger_entry_id"
     t.index ["user_id"], name: "index_gold_purchases_on_user_id"
   end

@@ -16,9 +16,13 @@ class GoldPurchasesController < ApplicationController
   # POST /gold_purchases
   def create
     price = gold_purchase_params[:price]
+    network = gold_purchase_params[:network]
     amount = GoldPurchase.calculate_amount(price)
+
     @gold_purchase = GoldPurchase.new(user: current_user,
-                                      amount: amount, price: price)
+                                      amount: amount,
+                                      price: price,
+                                      network: network)
 
     if @gold_purchase.save
       render json: @gold_purchase, status: :created, location: @gold_purchase
@@ -50,6 +54,6 @@ class GoldPurchasesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def gold_purchase_params
-    params.require(:gold_purchase).permit(:price)
+    params.require(:gold_purchase).permit(:price, :network)
   end
 end
