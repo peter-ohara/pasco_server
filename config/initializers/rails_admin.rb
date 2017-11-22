@@ -81,15 +81,7 @@ RailsAdmin.config do |config|
 
   config.model 'GoldPurchase' do
     list do
-      field :user do
-        formatted_value do # used in form views
-          "#{value.email}"
-        end
-
-        pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
-          "#{value.email}"
-        end
-      end
+      field :user
 
       field :amount do
         formatted_value do # used in form views
@@ -122,6 +114,19 @@ RailsAdmin.config do |config|
       field :price
       field :network
       field :gold_ledger_entry
+    end
+  end
+
+
+  config.model 'User' do
+    object_label_method do
+      :custom_label_method
+    end
+  end
+
+  User.class_eval do
+    def custom_label_method
+      self.email
     end
   end
 end
