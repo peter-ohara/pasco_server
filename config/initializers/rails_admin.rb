@@ -77,4 +77,51 @@ RailsAdmin.config do |config|
       end
     end
   end
+
+
+  config.model 'GoldPurchase' do
+    list do
+      field :user do
+        formatted_value do # used in form views
+          "#{value.email}"
+        end
+
+        pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+          "#{value.email}"
+        end
+      end
+
+      field :amount do
+        formatted_value do # used in form views
+          "#{value} PG"
+        end
+
+        pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+          "#{value} PG"
+        end
+      end
+
+      field :price do
+        formatted_value do # used in form views
+          "GHS #{value}"
+        end
+
+        pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+          "GHS #{value}"
+        end
+      end
+      field :network
+      field :gold_ledger_entry
+      field :created_at
+      field :updated_at
+    end
+
+    edit do
+      field :user
+      field :amount
+      field :price
+      field :network
+      field :gold_ledger_entry
+    end
+  end
 end
