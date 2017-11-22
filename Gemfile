@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
@@ -25,13 +24,12 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
-
 # Active Model Serializers for serializing responses
 gem 'active_model_serializers', '~> 0.10.0'
 
 # Pagination
-gem 'kaminari'
 gem 'api-pagination'
+gem 'kaminari'
 
 # ActiveRecord named scopes that take advantage of PostgreSQL’s full text search
 gem 'pg_search'
@@ -42,9 +40,12 @@ gem 'rails_admin', '~> 1.2'
 # Knock for Authentication
 gem 'knock'
 
+# Money Gem
+gem 'money-rails', '~>1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -55,6 +56,6 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 ruby '2.4.1'

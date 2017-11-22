@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171118182110) do
+ActiveRecord::Schema.define(version: 20171121132838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(version: 20171118182110) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_gold_ledger_entries_on_user_id"
+  end
+
+  create_table "gold_purchases", force: :cascade do |t|
+    t.bigint "gold_ledger_entry_id"
+    t.integer "price_pesewas"
+    t.string "price_currency", default: "GHS", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.integer "amount"
+    t.index ["gold_ledger_entry_id"], name: "index_gold_purchases_on_gold_ledger_entry_id"
+    t.index ["user_id"], name: "index_gold_purchases_on_user_id"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -83,6 +95,8 @@ ActiveRecord::Schema.define(version: 20171118182110) do
   end
 
   add_foreign_key "gold_ledger_entries", "users"
+  add_foreign_key "gold_purchases", "gold_ledger_entries"
+  add_foreign_key "gold_purchases", "users"
   add_foreign_key "purchases", "courses"
   add_foreign_key "purchases", "users"
   add_foreign_key "questions", "quizzes"

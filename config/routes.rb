@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :gold_purchases
   resources :courses
   resources :purchases
   post 'auth/login' => 'user_token#create'

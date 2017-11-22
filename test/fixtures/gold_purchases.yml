@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gold_ledger_entry: one
+  price_pesewas: 1
+  price_currency: MyString
+  sending_phone: MyString
+  transaction_flow: MyString
+
+two:
+  gold_ledger_entry: two
+  price_pesewas: 1
+  price_currency: MyString
+  sending_phone: MyString
+  transaction_flow: MyString
