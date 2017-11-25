@@ -1,10 +1,11 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :purchases, inverse_of: :user
+  has_many :purchases, inverse_of: :user, dependent: :destroy
   has_many :courses, through: :purchases
-  has_many :gold_ledger_entries, inverse_of: :user
-  has_many :gold_purchases, inverse_of: :user
+
+  has_many :gold_ledger_entries, inverse_of: :user, dependent: :destroy
+  has_many :gold_purchases, inverse_of: :user, dependent: :destroy
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }
 
