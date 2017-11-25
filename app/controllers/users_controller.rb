@@ -18,10 +18,6 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-    @user.gold_ledger_entries.build(amount: 99,
-                                    notes: 'Initial 99 pasco_gold given to user for purchasing courses')
-    # Automatically purchase ENGL157 (Communication Skills) for user
-    @user.purchases.build(course: Course.find_by(code: 'ENGL157'))
 
     if @user.save
       render json: @user, status: :created
