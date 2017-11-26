@@ -33,8 +33,8 @@ class User < ApplicationRecord
   def buy_them_comm_skills
     # Give them some gold to start with
     gold_ledger_entries.build(
-      amount: 99,
-      notes: 'Initial 99 pasco_gold given to user for purchasing courses'
+      amount: 149,
+      notes: 'Initial 149 pasco_gold given to user for purchasing courses'
     )
     save!
 
