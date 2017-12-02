@@ -32,8 +32,8 @@ class User < ApplicationRecord
 
   def give_them_some_gold
     gold_ledger_entries.build(
-      amount: 100,
-      notes: 'Initial 100 PG given to user for purchasing courses'
+      amount: 150,
+      notes: 'Initial 150 PG given to user for purchasing courses'
     )
     save!
   end
