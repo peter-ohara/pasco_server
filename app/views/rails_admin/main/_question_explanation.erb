@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-lg-12" style="margin-bottom: 1em;">
+    <%= form.text_area :explanation, class: 'form-control', cols: 43, rows: 3,
+                       data: { 'richtext': 'false', 'options': {}, 'render-in': '#rendered_explanation' } %>
+    <br>
+    <a href="#" id="explanation_upload_widget_opener"
+       data-upload="#question_explanation">Upload image</a>
+  </div>
+  <div class="col-lg-12">
+    <div class="page">
+      <div class="row">
+        <div class="mcq-question">
+          <span id="rendered_explanation">
+        	</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

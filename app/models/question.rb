@@ -29,7 +29,6 @@ class Question < ApplicationRecord
     end
   end
 
-
   rails_admin do
     edit do
       field :quiz
@@ -46,13 +45,23 @@ class Question < ApplicationRecord
         partial 'question_choices'
       end
 
-      field :answer
-      field :explanation
+      field :answer do
+        partial 'question_answer'
+      end
+
+      field :explanation do
+        partial 'question_explanation'
+      end
 
       field :title
+
       field :content do
         partial 'question_content'
       end
     end
+  end
+
+  def uploads
+    "some upload"
   end
 end

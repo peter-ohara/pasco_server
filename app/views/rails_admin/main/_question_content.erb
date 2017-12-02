@@ -1,7 +1,10 @@
 <div class="row">
   <div class="col-lg-12" style="margin-bottom: 1em;">
     <%= form.text_area :content, class: 'form-control', cols: 43, rows: 3,
-                       data: {'richtext': 'false', 'options': {}} %>
+                       data: { 'richtext': 'false', 'options': {}, 'render-in': '#rendered_content' } %>
+    <br>
+    <a href="#" id="content_upload_widget_opener"
+       data-upload="#question_content">Upload image</a>
   </div>
   <div class="col-lg-12">
     <div class="page">
@@ -15,140 +18,4 @@
   </div>
 </div>
 
-<link rel="stylesheet" href="/katex/katex.min.css">
-<script type="text/javascript"
-        async src="/MathJax/MathJax.js?config=AM_CHTML-full"></script>
-<script src="/ASCIIMathTeXKaTeX-2016-06-17.min.js"></script>
-<script src="/katex/katex.min.js"></script>
-<script>if (typeof(katex) != "undefined") AMfunc(true); </script>
-<script src="/autosize.min.js"></script>
-
-
-<script type="text/javascript" charset="utf-8">
-    var questionField = $("#question_question");
-    var contentField = $("#question_content");
-    var textAreaField = $("#question_choices");
-    var questionTypeField = $('#question_question_type');
-    var headerRelatedFields = $('#question_title_field, #question_content_field');
-    var mcqRelatedFields = $('#question_number_field, #question_question_field, ' +
-        '#question_choices_field, #question_answer_field, #question_explanation_field');
-    var fillInRelatedFields = $('#question_number_field, #question_question_field, ' +
-        '#question_answer_field, #question_explanation_field');
-    var essayRelatedFields = $('#question_number_field, #question_question_field, ' +
-        '#question_answer_field, #question_explanation_field');
-
-    function renderQuestion() {
-        $("#rendered_question").html(questionField.val());
-        // $("#user-code").text(questionField.val()); // If you want html code to be escaped
-        if (typeof(katex) != "undefined") AMfunc(true);
-    }
-
-    function renderContent() {
-        $("#rendered_content").html(contentField.val());
-        // $("#user-code").text(contentField.val()); // If you want html code to be escaped
-        if (typeof(katex) != "undefined") AMfunc(true);
-    }
-
-    function renderChoices() {
-        console.log(textAreaField.val());
-        var choices = JSON.parse(textAreaField.val());
-        console.log(choices);
-
-        // Clear options
-        $("#rendered_choices").html("");
-        // Recreate options
-        choices.forEach(function (choice, index) {
-            var choiceElement = '<li>\n' +
-                '  <span class="choice">' + String.fromCharCode(97 + index) + '</span>\n' +
-                '  <input type="radio" name="choices" value="a" id="a">\n' +
-                '  <label for="a">\n' +
-                '    <span class="check">\n' +
-                '      <span class="inside">\n' +
-                '      </span>\n' +
-                '    </span>\n' +
-                '    <span class="choice-span">' + choice + '</span>\n' +
-                '  </label>';
-
-            if (choices.length - 1 !== index) {
-                choiceElement += '<hr>';
-            }
-
-            choiceElement += '</li>';
-
-            $("#rendered_choices").append(choiceElement);
-            if (typeof(katex) != "undefined") AMfunc(true);
-        });
-    }
-
-    function displayHeader() {
-        mcqRelatedFields.hide();
-        fillInRelatedFields.hide();
-        essayRelatedFields.hide();
-        headerRelatedFields.show();
-    }
-
-    function displayMCQ() {
-        headerRelatedFields.hide();
-        fillInRelatedFields.hide();
-        essayRelatedFields.hide();
-        mcqRelatedFields.show();
-    }
-
-    function displayFillIn() {
-        headerRelatedFields.hide();
-        mcqRelatedFields.hide();
-        essayRelatedFields.hide();
-        fillInRelatedFields.show();
-    }
-
-    function displayEssay() {
-        headerRelatedFields.hide();
-        mcqRelatedFields.hide();
-        fillInRelatedFields.hide();
-        essayRelatedFields.show();
-    }
-
-    function hideAllFields() {
-        headerRelatedFields.hide();
-        mcqRelatedFields.hide();
-        fillInRelatedFields.hide();
-        essayRelatedFields.hide();
-    }
-
-    function displayCorrectFields() {
-        if (questionTypeField.val() === '0') {
-            displayHeader();
-        } else if (questionTypeField.val() === '1') {
-            displayMCQ();
-        } else if (questionTypeField.val() === '2') {
-            displayFillIn();
-        } else if (questionTypeField.val() === '3') {
-            displayEssay();
-        } else {
-            hideAllFields();
-        }
-    }
-
-    questionTypeField.change(function () {
-        displayCorrectFields();
-    });
-
-    questionField.keyup(function(){
-        renderQuestion();
-    });
-
-    contentField.keyup(function(){
-        renderContent();
-    });
-
-    textAreaField.keyup(function(){
-        renderChoices();
-    });
-
-    renderQuestion();
-    renderChoices();
-    renderContent();
-    displayCorrectFields();
-
-    autosize($('textarea'));
-</script>
+<%= render 'all_the_scripts' %>
