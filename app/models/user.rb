@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }
 
   before_save { |user| user.email = email.downcase }
-  after_create :buy_them_comm_skills
+  after_create :give_them_some_gold
 
   def pasco_gold
     gold_ledger_entries.sum(:amount)
@@ -30,17 +30,10 @@ class User < ApplicationRecord
 
   private
 
-  def buy_them_comm_skills
-    # Give them some gold to start with
+  def give_them_some_gold
     gold_ledger_entries.build(
-      amount: 149,
-      notes: 'Initial 149 pasco_gold given to user for purchasing courses'
-    )
-    save!
-
-    # Purchase ENGL157 (Communication Skills) on their behalf
-    purchases.build(
-      course: Course.find_by(code: 'ENGL157')
+      amount: 100,
+      notes: 'Initial 100 PG given to user for purchasing courses'
     )
     save!
   end
