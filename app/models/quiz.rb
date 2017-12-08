@@ -38,7 +38,7 @@ class Quiz < ApplicationRecord
            dependent: :destroy, inverse_of: :quiz
 
 
-  validates :course_code, :course_name, :quiz_type, :year, presence: true
+  validates :quiz_type, :year, presence: true
 
   validates :year, numericality: {
     only_integer: true,
