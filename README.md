@@ -1,24 +1,51 @@
-# README
+# Pasco Server
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+API server for version 2 of Pasco, a test prep application for university students in Ghana
 
-Things you may want to cover:
+## Architecture and models
 
-* Ruby version
+![Models](pasco_server_erd.png)
 
-* System dependencies
 
-* Configuration
+## Development
 
-* Database creation
+##### Prerequisites
 
-* Database initialization
+The setups steps expect following tools installed on the system.
 
-* How to run the test suite
+- Git
+- Ruby [2.4.2](https://github.com/peter-ohara/pasco_server/blob/master/.ruby-version#L1)
+- Rails [5.1.3](https://github.com/peter-ohara/pasco_server/blob/master/Gemfile#L12)
 
-* Services (job queues, cache servers, search engines, etc.)
+##### 1. Check out the repository
 
-* Deployment instructions
+```bash
+git clone git@github.com:peter-ohara/pasco_server.git
+```
 
-* ...
+##### 2. Create database.yml file
+
+Copy the sample database.yml file and edit the database configuration as required.
+
+```bash
+cp config/database.yml.sample config/database.yml
+```
+
+##### 3. Create and setup the database
+
+Run the following commands to create and setup the database.
+
+```ruby
+bundle exec rake db:create
+bundle exec rake db:setup
+```
+
+##### 4. Start the Rails server
+
+You can start the rails server using the command given below.
+
+```ruby
+bundle exec rails s
+```
+
+And now you can visit the site with the URL http://localhost:3000
