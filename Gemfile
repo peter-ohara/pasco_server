@@ -38,7 +38,7 @@ gem 'kaminari'
 gem 'pg_search'
 
 # RailsAdmin
-gem 'rails_admin', '~> 1.2'
+gem 'rails_admin', '~> 1.4'
 
 # Knock for Authentication
 gem 'knock'
